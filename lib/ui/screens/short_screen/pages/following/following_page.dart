@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ovatoyu/ui/screens/home_screen/pages/following/following_view_model.dart';
+
 import 'package:ovatoyu/ui/styles/color.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../theme/colors.dart';
+import 'following_view_model.dart';
 
 class FollowingPage extends StatelessWidget {
   const FollowingPage({Key? key}) : super(key: key);

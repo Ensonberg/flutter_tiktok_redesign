@@ -89,10 +89,10 @@ class _CompetitionScrollScreenState extends State<CompetitionScrollScreen>
                                 child: InkWell(
                                   hoverColor: Colors.red,
                                   onTap: () {
-                                    Navigator.of(context)
-                                        .pushNamed(UploadVideoScreen.routeName)
-                                        .then((value) =>
-                                            Navigator.of(context).pop());
+                                    // Navigator.of(context)
+                                    //     .pushNamed(UploadVideoScreen.routeName)
+                                    //     .then((value) =>
+                                    //         Navigator.of(context).pop());
                                   },
                                   child: ListTile(
                                     leading: CircleAvatar(

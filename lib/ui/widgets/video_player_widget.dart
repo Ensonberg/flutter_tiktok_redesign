@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:iconly/iconly.dart';
 import 'package:ovatoyu/ui/widgets/left_panel.dart';
 import 'package:ovatoyu/ui/widgets/right_panel.dart';
 import 'package:video_player/video_player.dart';
@@ -71,11 +73,10 @@ class _VideoPlayerItemState extends State<VideoPlayerItem>
   Widget isPlaying() {
     return _videoController.value.isPlaying && !isShowPlaying
         ? Container()
-        : SvgPicture.asset(
-            "assets/svgs/paly.svg",
-            height: 40,
-            width: 50,
-            color: white.withOpacity(0.5),
+        : Icon(
+            IconlyBold.play,
+            color: Colors.white,
+            size: 50.w,
           );
   }
 
@@ -124,6 +125,7 @@ class _VideoPlayerItemState extends State<VideoPlayerItem>
               ),
               Positioned(
                 right: 10,
+                bottom: 0,
                 child: RightPanel(
                   isCompetition: widget.isCompetition,
                   size: widget.size!,

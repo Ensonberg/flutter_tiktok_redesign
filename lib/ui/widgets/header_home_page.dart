@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../screens/home_screen/home_view_model.dart';
+import '../screens/short_screen/shorts_view_model.dart';
 
 class HeaderHomePage extends StatelessWidget {
-  final HomePageViewModel viewModel;
+  final ShortsViewModel viewModel;
   const HeaderHomePage({Key? key, required this.viewModel}) : super(key: key);
 
   @override

@@ -398,6 +398,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ovatoyu/core/controllers/add_video_controller.dart';
 import 'package:ovatoyu/ui/screens/video/preview_video/video_preview_screen.dart';
 import 'package:ovatoyu/ui/theme/colors.dart';
@@ -432,8 +433,24 @@ class _StartVideoScreenState extends State<StartVideoScreen> {
   @override
   void initState() {
     super.initState();
-    _cameraController = CameraController(cameras[0], ResolutionPreset.high);
-    cameraValue = _cameraController!.initialize();
+    _cameraController = CameraController(cameras[1], ResolutionPreset.high);
+    cameraValue = _cameraController!.initialize().then((value) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {});
+    }).catchError((Object e) {
+      if (e is CameraException) {
+        switch (e.code) {
+          case 'CameraAccessDenied':
+            // Handle access errors here.
+            break;
+          default:
+            // Handle other errors here.
+            break;
+        }
+      }
+    });
   }
 
   @override

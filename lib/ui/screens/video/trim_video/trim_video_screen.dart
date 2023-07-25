@@ -33,6 +33,7 @@ class _TrimVideoScreenState extends State<TrimVideoScreen> {
     await _trimmer.loadVideo(videoFile: File(controller.file.path));
     super.didChangeDependencies();
   }
+
   @override
   void dispose() {
     _trimmer.dispose();
@@ -107,7 +108,8 @@ class _TrimVideoScreenState extends State<TrimVideoScreen> {
                               color: Colors.white,
                             ),
                       onPressed: () async {
-                        bool playbackState = await _trimmer.videPlaybackControl(
+                        bool playbackState =
+                            await _trimmer.videoPlaybackControl(
                           startValue: _startValue,
                           endValue: _endValue,
                         );
@@ -124,12 +126,12 @@ class _TrimVideoScreenState extends State<TrimVideoScreen> {
               bottom: 20,
               child: Row(
                 children: [
-                  TrimEditor(
+                  TrimViewer(
                     trimmer: _trimmer,
-                    borderPaintColor: Colors.pink,
-                    borderWidth: 6,
-                    scrubberWidth: 5,
-                    circlePaintColor: primary,
+                    // borderPaintColor: Colors.pink,
+                    // borderWidth: 6,
+                    // scrubberWidth: 5,
+                    // circlePaintColor: primary,
                     viewerHeight: media.height * 0.15,
                     maxVideoLength: Duration(minutes: 3),
                     onChangeStart: (value) {

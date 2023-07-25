@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
 
-class HomePageViewModel extends BaseViewModel {
+class ShortsViewModel extends BaseViewModel {
   int _pageIndex = 1;
 
   int get pageIndex => _pageIndex;

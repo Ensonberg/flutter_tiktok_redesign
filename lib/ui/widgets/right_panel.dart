@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iconly/iconly.dart';
 import 'package:ovatoyu/ui/widgets/column_social_icon.dart';
-import 'package:share_plus/share_plus.dart';
 
 class RightPanel extends StatelessWidget {
   final String? likes;
@@ -34,28 +34,15 @@ class RightPanel extends StatelessWidget {
             height: size!.height * 0.3,
           ),
           SizedBox(
-            height: size!.height * 0.4,
+            height: size!.height * 0.32,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                isCompetition == true
-                    ? const ChangeIcon(
-                        asset1: "assets/svgs/VoteBlue.svg",
-                        asset2: "assets/svgs/VoteWhite.svg",
-                        count: "vote")
-                    : getProfile(profileImg, context),
-                const ChangeIcon(
-                    asset1: "assets/svgs/liked_white.svg",
-                    asset2: "assets/svgs/liked_red.svg",
-                    count: "236"),
+              children: [
+                const ChangeIcon(iconData: IconlyBold.heart, count: "236"),
+
                 getIcons(context, "assets/svgs/comment.svg", comments, 35.0),
-                MaterialButton(
-                    padding: EdgeInsets.zero,
-                    elevation: 0,
-                    onPressed: () {
-                      Share.share('check out my website https://example.com');
-                    },
-                    child: SvgPicture.asset("assets/svgs/Share.svg"))
+                const ChangeIcon(iconData: IconlyBold.more_circle, count: ""),
+                const ChangeIcon(iconData: IconlyBold.send, count: ""),
                 //getAlbum(albumImg, animationController!)
               ],
             ),

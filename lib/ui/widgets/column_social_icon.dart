@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:iconly/iconly.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:ovatoyu/ui/dialogs/comment_dialog.dart';
 import 'package:ovatoyu/ui/screens/competition/competition_screen.dart';
@@ -34,12 +35,9 @@ import 'package:ovatoyu/ui/theme/colors.dart';
 //   );
 // }
 class ChangeIcon extends StatefulWidget {
-  final String asset1, count, asset2;
-  const ChangeIcon(
-      {Key? key,
-      required this.asset1,
-      required this.asset2,
-      required this.count})
+  final String count;
+  final IconData iconData;
+  const ChangeIcon({Key? key, required this.iconData, required this.count})
       : super(key: key);
 
   @override
@@ -50,9 +48,7 @@ class _ChangeIconState extends State<ChangeIcon> {
   bool isClicked = false;
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      elevation: 0,
-      padding: EdgeInsets.zero,
+    return TextButton(
       onPressed: () {
         setState(() {
           isClicked = !isClicked;
@@ -60,10 +56,10 @@ class _ChangeIconState extends State<ChangeIcon> {
       },
       child: Column(
         children: <Widget>[
-          SvgPicture.asset(
-            isClicked ? widget.asset2 : widget.asset1,
-            height: 32,
-            width: 32,
+          Icon(
+            widget.iconData,
+            size: 32.w,
+            color: isClicked ? Theme.of(context).primaryColor : Colors.white,
           ),
           SizedBox(
             height: 5,
@@ -95,7 +91,11 @@ Widget getIcons(
     },
     child: Column(
       children: <Widget>[
-        SvgPicture.asset(asset),
+        Icon(
+          IconlyBold.chat,
+          color: Colors.white,
+          size: 30.sp,
+        ),
         SizedBox(
           height: 5,
         ),

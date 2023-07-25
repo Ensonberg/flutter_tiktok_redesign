@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:ovatoyu/ui/screens/home_screen/pages/live/live_view_model.dart';
+
 import 'package:ovatoyu/ui/screens/single_live/single_live_screen.dart';
 import 'package:stacked/stacked.dart';
+import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
+import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
+
+import 'live_view_model.dart';
 
 class LivePage extends StatefulWidget {
   const LivePage({Key? key}) : super(key: key);

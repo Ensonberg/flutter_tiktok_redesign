@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ovatoyu/app/service_locator.dart';
 import 'package:ovatoyu/ui/screens/auth/email_auth_screen.dart';
 import 'package:ovatoyu/ui/screens/auth/gettig_started_screen.dart';
@@ -37,7 +38,7 @@ void main() async {
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);
-  setup();
+
   runApp(const MyApp());
 }
 
@@ -51,21 +52,22 @@ class MyApp extends StatelessWidget {
         designSize: Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
-        builder: (child) {
+        builder: (ctx, child) {
           return GetMaterialApp(
-            title: 'Ovatoyo App',
+            title: 'Toktok App',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
                 primaryColor: OColor.primaryColor,
-                fontFamily: "SF Pro Display"),
-            home: const GettingStartedScreen(),
+                useMaterial3: true,
+                fontFamily: GoogleFonts.urbanist().fontFamily),
+            home: const MainScreen(),
             // home: const MainScreen(),
             // initialRoute: HomePage.routeName,
             routes: {
               MainScreen.routeName: (_) => const MainScreen(),
               SingleLiveScreen.routeName: (_) => const SingleLiveScreen(),
               ChatScreen.routeName: (_) => const ChatScreen(),
-              UploadVideoScreen.routeName: (_) => UploadVideoScreen(),
+              // UploadVideoScreen.routeName: (_) => UploadVideoScreen(),
               StartVideoScreen.routeName: (_) => StartVideoScreen(),
               JoinCompetitionScreen.routeName: (_) =>
                   const JoinCompetitionScreen(),

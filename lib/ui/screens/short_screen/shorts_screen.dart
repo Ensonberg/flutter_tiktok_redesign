@@ -5,29 +5,29 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ovatoyu/core/constant/data_json.dart';
 import 'package:ovatoyu/core/controllers/add_video_controller.dart';
-import 'package:ovatoyu/ui/screens/home_screen/home_view_model.dart';
-import 'package:ovatoyu/ui/screens/home_screen/pages/discover/discover_page.dart';
-import 'package:ovatoyu/ui/screens/home_screen/pages/live/live_page.dart';
+
 import 'package:ovatoyu/ui/widgets/header_home_page.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../widgets/video_player_widget.dart';
+import 'pages/discover/discover_page.dart';
 import 'pages/following/following_page.dart';
+import 'pages/live/live_page.dart';
+import 'shorts_view_model.dart';
 
-class HomePage extends StatefulWidget {
+class ShortsScreen extends StatefulWidget {
   static const routeName = "/homeScreen";
   @override
-  _HomePageState createState() => _HomePageState();
+  _ShortsScreenState createState() => _ShortsScreenState();
 }
 
-class _HomePageState extends State<HomePage>
+class _ShortsScreenState extends State<ShortsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   late PageController _pageController;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _tabController = TabController(length: items.length, vsync: this);
@@ -47,36 +47,13 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     AddVideoController controller = Get.put(AddVideoController());
-    return ViewModelBuilder<HomePageViewModel>.reactive(
-        viewModelBuilder: () => HomePageViewModel(),
+    return ViewModelBuilder<ShortsViewModel>.reactive(
+        viewModelBuilder: () => ShortsViewModel(),
         builder: (context, model, child) {
           _pageController.addListener(() {
             model.selectedTab(_pageController.page!.toInt());
           });
-          return Stack(
-            children: [
-              PageView(
-                controller: _pageController,
-                onPageChanged: (value) {
-                  model.selectedTab(value);
-                  //print(value);
-                  if (value == 1) {
-                    SystemChrome.setSystemUIOverlayStyle(
-                        SystemUiOverlayStyle.dark);
-                  } else {
-                    SystemChrome.setSystemUIOverlayStyle(
-                        SystemUiOverlayStyle.light);
-                  }
-                },
-                children: [FollowingPage(), DiscoverPage(), LivePage()],
-              ),
-              SafeArea(
-                child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: HeaderHomePage(viewModel: model)),
-              ),
-            ],
-          );
+          return DiscoverPage();
         });
   }
 
@@ -119,7 +96,8 @@ class _HomePageState extends State<HomePage>
                                 "https://www.andersonsobelcosmetic.com/wp-content/uploads/2018/09/chin-implant-vs-fillers-best-for-improving-profile-bellevue-washington-chin-surgery.jpg",
                             height: 100.0.h,
                             width: 100.0.w,
-                            placeholder: (context, url) => const CircularProgressIndicator(),
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(),
                             errorWidget: (context, url, error) =>
                                 Icon(Icons.error),
                           ),
@@ -131,8 +109,8 @@ class _HomePageState extends State<HomePage>
                     ),
                     Text(
                       "@Charlotte21",
-                      style:
-                          TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 15.sp, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 20.h,
@@ -153,7 +131,8 @@ class _HomePageState extends State<HomePage>
                             Text(
                               "Following",
                               style: TextStyle(
-                                  fontSize: 12.sp, fontWeight: FontWeight.normal),
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.normal),
                             ),
                           ],
                         ),
